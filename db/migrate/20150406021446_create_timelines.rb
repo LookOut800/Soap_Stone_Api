@@ -3,6 +3,7 @@ class CreateTimelines < ActiveRecord::Migration
     create_table :timelines do |t|
       t.belongs_to :desk, index: true
       t.string :title
+      t.text :description
 
       t.timestamps null: false
     end

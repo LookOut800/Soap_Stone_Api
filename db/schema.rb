@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406021446) do
+ActiveRecord::Schema.define(version: 20150406150014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,11 +26,23 @@ ActiveRecord::Schema.define(version: 20150406021446) do
 
   add_index "desks", ["user_id"], name: "index_desks_on_user_id", using: :btree
 
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "url"
+    t.integer  "timeline_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "posts", ["timeline_id"], name: "index_posts_on_timeline_id", using: :btree
+
   create_table "timelines", force: :cascade do |t|
     t.integer  "desk_id"
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "timelines", ["desk_id"], name: "index_timelines_on_desk_id", using: :btree
@@ -46,5 +58,6 @@ ActiveRecord::Schema.define(version: 20150406021446) do
   end
 
   add_foreign_key "desks", "users"
+  add_foreign_key "posts", "timelines"
   add_foreign_key "timelines", "desks"
 end
