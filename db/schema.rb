@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406150014) do
+ActiveRecord::Schema.define(version: 20150408135723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "art_objects", force: :cascade do |t|
+    t.string   "period"
+    t.string   "color"
+    t.string   "feature_image"
+    t.string   "thumbnail"
+    t.string   "medium"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "timeline_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "art_objects", ["timeline_id"], name: "index_art_objects_on_timeline_id", using: :btree
 
   create_table "desks", force: :cascade do |t|
     t.string   "name"
@@ -57,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150406150014) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "art_objects", "timelines"
   add_foreign_key "desks", "users"
   add_foreign_key "posts", "timelines"
   add_foreign_key "timelines", "desks"
