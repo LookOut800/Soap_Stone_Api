@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :posts, except: [:new, :edit]
-  resources :timelines, except: [:new, :edit]
-  resources :desks, except: [:new, :edit]
-  resources :users, except: [:new, :edit]
+  resources :posts
+  resources :timelines
+  resources :desks
+  resources :users
+  post '/login', to: 'users#login'
+  get '/logout', to: 'users#logout'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
