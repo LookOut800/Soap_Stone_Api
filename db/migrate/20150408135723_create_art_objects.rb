@@ -2,7 +2,10 @@ class CreateArtObjects < ActiveRecord::Migration
   def change
     create_table :art_objects do |t|
       t.string :period
+      t.string :date
       t.string :color
+      t.string :object_type
+      t.string :object_id
       t.string :feature_image
       t.string :thumbnail
       t.string :medium

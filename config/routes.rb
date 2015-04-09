@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   resources :users
   resources :desks, shallow: true do
     resources :timelines do
-      resources :art_objects, except: [:new, :edit]
+
       resources :posts
     end
   end
+resources :art_objects
 
   post '/login', to: 'users#login'
   get '/logout', to: 'users#logout'
