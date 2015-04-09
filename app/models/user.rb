@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_one :desk
-
+  has_many :timelines
   has_secure_password
 
   validates_uniqueness_of :username
