@@ -4,7 +4,7 @@ class ArtObjectsController < ApplicationController
   # GET /art_objects
   # GET /art_objects.json
   def index
-    @timeline = Timeline.find(param[:timeline_id])
+    @timeline = Timeline.find(params[:timeline_id])
     @art_objects = @timeline.art_objects
 
     render json: @art_objects

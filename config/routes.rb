@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     resources :timelines, only: [:index, :show] do
     resources :posts, only: [:index, :edit, :show, :create, :destroy]
     resources :art_objects, only: [:index, :show]
-
     end
   end
   resources :timelines, only: [:create, :destroy]
