@@ -12,6 +12,7 @@ class TimelinesController < ApplicationController
   # GET /timelines/1
   # GET /timelines/1.json
   def show
+    @timeline = Timeline.find(params[:id])
     render json: @timeline
   end
 
@@ -54,6 +55,6 @@ class TimelinesController < ApplicationController
     end
 
     def timeline_params
-      params.require(:timeline).permit(:desk_id, :title)
+      params.require(:timeline).permit(:user_id, :title, :description)
     end
 end

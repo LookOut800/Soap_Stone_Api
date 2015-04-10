@@ -54,6 +54,6 @@ class ArtObjectsController < ApplicationController
     end
 
     def art_object_params
-      params.require(:art_object).permit(:period, :color, :feature_image, :thumbnail, :medium, :title, :description, :thread_id)
+      params.require(:art_object).permit(:period, :color, :feature_image, :thumbnail, :medium, :title, :description, :timeline_id)
     end
 end
