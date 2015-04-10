@@ -2,11 +2,14 @@ Rails.application.routes.draw do
 
   # resources :desks
   resources :users do
-    resources :timelines, only: [:index, :show, :create, :destroy] do
+    resources :timelines, only: [:index, :show] do
     resources :posts, only: [:index, :edit, :show, :create, :destroy]
-    resources :art_objects, only: [:index, :create, :destroy]
+    resources :art_objects, only: [:index, :show]
+
     end
   end
+  resources :timelines, only: [:create, :destroy]
+  resources :art_objects, only: [:create, :destroy]
 
   post '/login', to: 'users#login'
   get '/logout', to: 'users#logout'
