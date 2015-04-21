@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :art_objects, only: [:index, :show]
     end
   end
-  resources :timelines, only: [:create, :destroy]
+  resources :timelines, only: [:create, :edit, :update, :destroy]
   resources :art_objects, only: [:create, :destroy]
 
   post '/login', to: 'users#login'

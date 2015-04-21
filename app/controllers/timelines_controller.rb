@@ -1,5 +1,5 @@
 class TimelinesController < ApplicationController
-  # before_action :set_timeline, only: [:show, :update, :destroy]
+  before_action :set_timeline, only: [:show, :update, :destroy]
 
   # GET /timelines
   # GET /timelines.json
